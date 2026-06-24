@@ -31,10 +31,10 @@ Aplikasi manajemen tugas (*To-Do List*) berbasis web yang dibangun dengan **Lara
 
 | Method | URI | Controller | Nama Route | Auth |
 |---|---|---|---|---|
-| GET | `/login` | `AuthController@index` | `login` | ❌ |
-| POST | `/logout` | `AuthController@logout` | `logout` | ❌ |
-| GET | `/auth/workos` | `WorkOSController@redirect` | `workos.login` | ❌ |
-| GET | `/auth/callback` | `WorkOSController@callback` | `workos.callback` | ❌ |
+| GET | `/login` | `AuthController@index` | `login` | ✅ |
+| POST | `/logout` | `AuthController@logout` | `logout` | ✅ |
+| GET | `/auth/workos` | `WorkOSController@redirect` | `workos.login` | ✅ |
+| GET | `/auth/callback` | `WorkOSController@callback` | `workos.callback` | ✅ |
 | GET | `/todo` | `TodoController@index` | `todo` | ✅ |
 | POST | `/todo` | `TodoController@store` | `todo.post` | ✅ |
 | PUT | `/todo/{id}` | `TodoController@update` | `todo.update` | ✅ |
