@@ -14,12 +14,12 @@ class WorkOSController extends Controller
     public function redirect()
     {
         $workos = new WorkOS(
-            apiKey: env('WORKOS_API_KEY'),
-            clientId: env('WORKOS_CLIENT_ID'),
+            apiKey: config('services.workos.api_key'),
+            clientId: config('services.workos.client_id'),
         );
 
         $url = $workos->userManagement()->getAuthorizationUrl(
-            redirectUri: env('WORKOS_REDIRECT_URL'),
+            redirectUri: config('services.workos.redirect_url'),
             provider: UserManagementAuthenticationProvider::Authkit,
         );
 
@@ -37,8 +37,8 @@ class WorkOSController extends Controller
 
         try {
             $workos = new WorkOS(
-                apiKey: env('WORKOS_API_KEY'),
-                clientId: env('WORKOS_CLIENT_ID'),
+                apiKey: config('services.workos.api_key'),
+                clientId: config('services.workos.client_id'),
             );
 
             $auth = $workos->userManagement()->authenticateWithCode(

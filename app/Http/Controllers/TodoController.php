@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Http\Requests\TodoRequest;
 
 class TodoController extends Controller
 {
@@ -18,18 +19,8 @@ class TodoController extends Controller
         return view('todo.app', compact('todos'));
     }
 
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        $request->validate(
-            [
-                'task' => 'required|min:5|max:255',
-            ],
-            [
-                'task.required' => 'Task wajib diisi',
-                'task.min' => 'Task minimal 5 karakter',
-                'task.max' => 'Task maksimal 255 karakter',
-            ]
-        );
 
         Todo::create([
             'task' => $request->task,
@@ -40,18 +31,8 @@ class TodoController extends Controller
             ->with('success', 'Data todo berhasil ditambahkan!');
     }
 
-    public function update(Request $request, string $id)
+    public function update(TodoRequest $request, string $id)
     {
-        $request->validate(
-            [
-                'task' => 'required|min:5|max:255',
-            ],
-            [
-                'task.required' => 'Task wajib diisi',
-                'task.min' => 'Task minimal 5 karakter',
-                'task.max' => 'Task maksimal 255 karakter',
-            ]
-        );
 
         $todo = Todo::findOrFail($id);
 

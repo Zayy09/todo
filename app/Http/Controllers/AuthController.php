@@ -12,28 +12,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ], $request->remember)) {
-
-            $request->session()->regenerate();
-
-            return redirect('/todo');
-        }
-
-        return back()
-            ->withInput()
-            ->with('error', 'Email atau Password salah');
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();

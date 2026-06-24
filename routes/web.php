@@ -8,9 +8,6 @@ use App\Http\Controllers\WorkOSController;
 Route::get('/login', [AuthController::class, 'index'])
     ->name('login');
 
-Route::post('/login', [AuthController::class, 'login'])
-    ->name('login.process');
-
 Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout');
 
@@ -20,14 +17,6 @@ Route::get('/auth/workos', [WorkOSController::class, 'redirect'])
 
 Route::get('/auth/callback', [WorkOSController::class, 'callback'])
     ->name('workos.callback');
-
-Route::get('/cek-redirect', function () {
-    dd(env('WORKOS_REDIRECT_URL'));
-});
-
-Route::get('/cek-workos', function () {
-    dd(env('WORKOS_CLIENT_ID'));
-});
 
 Route::middleware('auth')->group(function () {
 
